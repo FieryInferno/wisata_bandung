@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class FirstScreen extends StatelessWidget {
   final String gambar;
   final String namaWisata;
   final String hari;
   final String jamBuka;
+  final int harga;
 
   const FirstScreen({
     super.key,
@@ -12,7 +14,18 @@ class FirstScreen extends StatelessWidget {
     required this.namaWisata,
     required this.hari,
     required this.jamBuka,
+    required this.harga,
   });
+
+  String formatRupiah(int angka) {
+    final formatter = NumberFormat.currency(
+      locale: 'id_ID', // set locale ke Indonesia
+      decimalDigits: 0, // jumlah digit desimal yang ditampilkan
+      symbol: 'Rp', // simbol mata uang yang digunakan
+    );
+
+    return formatter.format(angka);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,11 +74,13 @@ class FirstScreen extends StatelessWidget {
                               Text(jamBuka),
                             ],
                           ),
-                          Column(children: const <Widget>[
-                            Icon(Icons.attach_money),
-                            SizedBox(height: 10),
-                            Text('Rp. 25.000'),
-                          ])
+                          Column(
+                            children: <Widget>[
+                              const Icon(Icons.attach_money),
+                              const SizedBox(height: 10),
+                              Text(harga == 0 ? 'Gratis' : formatRupiah(harga)),
+                            ],
+                          )
                         ]),
                     const SizedBox(height: 20),
                     const Text(
