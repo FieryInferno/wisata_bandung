@@ -7,6 +7,7 @@ class FirstScreen extends StatelessWidget {
   final String hari;
   final String jamBuka;
   final int harga;
+  final String description;
 
   const FirstScreen({
     super.key,
@@ -15,6 +16,7 @@ class FirstScreen extends StatelessWidget {
     required this.hari,
     required this.jamBuka,
     required this.harga,
+    required this.description,
   });
 
   String formatRupiah(int angka) {
@@ -58,35 +60,36 @@ class FirstScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
                     Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          Column(
-                            children: <Widget>[
-                              const Icon(Icons.calendar_month),
-                              const SizedBox(height: 10),
-                              Text(hari),
-                            ],
-                          ),
-                          Column(
-                            children: <Widget>[
-                              const Icon(Icons.schedule),
-                              const SizedBox(height: 10),
-                              Text(jamBuka),
-                            ],
-                          ),
-                          Column(
-                            children: <Widget>[
-                              const Icon(Icons.attach_money),
-                              const SizedBox(height: 10),
-                              Text(harga == 0 ? 'Gratis' : formatRupiah(harga)),
-                            ],
-                          )
-                        ]),
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Column(
+                          children: <Widget>[
+                            const Icon(Icons.calendar_month),
+                            const SizedBox(height: 10),
+                            Text(hari),
+                          ],
+                        ),
+                        Column(
+                          children: <Widget>[
+                            const Icon(Icons.schedule),
+                            const SizedBox(height: 10),
+                            Text(jamBuka),
+                          ],
+                        ),
+                        Column(
+                          children: <Widget>[
+                            const Icon(Icons.attach_money),
+                            const SizedBox(height: 10),
+                            Text(harga == 0 ? 'Gratis' : formatRupiah(harga)),
+                          ],
+                        )
+                      ],
+                    ),
                     const SizedBox(height: 20),
-                    const Text(
-                      'Berada di jalur utama Bandung-Lembang, Farm house menjadi objek wisata yang tidak pernah sepi pengunjung. Selain karena letaknya strategis, kawasan ini juga menghadirkan nuansa wisata khas eropa. Semua itu diterapkan dalam bentuk spot swafoto instagramable',
+                    Text(
+                      description,
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 17),
+                      style: const TextStyle(fontSize: 17),
                     ),
                     const SizedBox(height: 20),
                     SizedBox(

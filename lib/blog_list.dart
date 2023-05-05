@@ -30,6 +30,7 @@ class _BlogList extends State<BlogList> {
                     hari: dataWisata['hari'],
                     jamBuka: dataWisata['jam_buka'],
                     harga: dataWisata['harga'],
+                    description: dataWisata['description'],
                   );
                 }),
               ),
