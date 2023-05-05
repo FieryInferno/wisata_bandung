@@ -8,6 +8,7 @@ class FirstScreen extends StatelessWidget {
   final String jamBuka;
   final int harga;
   final String description;
+  final List<String> images;
 
   const FirstScreen({
     super.key,
@@ -17,6 +18,7 @@ class FirstScreen extends StatelessWidget {
     required this.jamBuka,
     required this.harga,
     required this.description,
+    required this.images,
   });
 
   String formatRupiah(int angka) {
@@ -96,35 +98,20 @@ class FirstScreen extends StatelessWidget {
                       height: 150,
                       child: ListView(
                         scrollDirection: Axis.horizontal,
-                        children: <Widget>[
-                          Padding(
+                        children: images.map((image) {
+                          return Padding(
                             padding: const EdgeInsets.all(4.0),
                             child: ClipRRect(
-                                borderRadius: BorderRadius.circular(
-                                    20), // radius yang diinginkan
-                                child: Image.asset(
-                                    'images/farmhouse-lembang.jpg',
-                                    width: 200)),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: ClipRRect(
-                                borderRadius: BorderRadius.circular(
-                                    20), // radius yang diinginkan
-                                child: Image.asset(
-                                    'images/farmhouse-lembang.jpg',
-                                    width: 200)),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: ClipRRect(
-                                borderRadius: BorderRadius.circular(
-                                    20), // radius yang diinginkan
-                                child: Image.asset(
-                                    'images/farmhouse-lembang.jpg',
-                                    width: 200)),
-                          ),
-                        ],
+                              borderRadius: BorderRadius.circular(
+                                  20), // radius yang diinginkan
+                              child: Image.asset(
+                                image,
+                                width: 200,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          );
+                        }).toList(),
                       ),
                     ),
                   ]),
